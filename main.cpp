@@ -35,13 +35,19 @@ public:
 	}
 };
 
-class Dod {
+class Dog {
 private:
 	std::string name;
 	std::vector<Talent*> talents;
 public:
-	Dod(std::string in_name) {
+	Dog(std::string in_name) {
 		this->name = in_name;
+	}
+
+	~Dog() {
+		for (int i = 0; i < talents.size(); ++i) {
+			delete talents[i];
+		}
 	}
 
 	void setName(std::string in_name) {
@@ -69,7 +75,7 @@ public:
 };
 
 int main() {
-	Dod superDog("Steve");
+	Dog superDog("Steve");
 	superDog.addTalent(new Dancing());
 	superDog.addTalent(new Swimming());
 	superDog.addTalent(new Counting());
